@@ -1,0 +1,32 @@
+table,
+td {
+  border: 1px solid;
+}
+
+input {
+  width: 100%;
+  border: 0px solid;
+  /*background-color: rgb(230, 230, 230);*/
+}
+
+.colTable {
+  background-color: rgb(230, 230, 230);
+  vertical-align: middle;
+}
+
+@media print {
+  .colTable {
+    background-color: rgb(230, 230, 230) !important;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print {
+  th {
+    color: rgb(0, 0, 0) !important;
+  }
+}
+
+.borderless tr {
+  border: none;
+}
