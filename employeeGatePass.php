@@ -392,21 +392,6 @@ include('dbcon.php');
               <td colspan="10" class="fw-bold">Signature over Printed Name (Employee)</td>
               <td colspan="10" class="fw-bold">Immediate Supervisor / Approving Manager</td>
             </tr>
-            <tr>
-              <td colspan="20" class="fw-bold"></td>
-              <?php
-              $conn = mysqli_connect("localhost", "root", "", "gatepassdb");
-              $query = "SELECT * FROM gatepass ORDER BY id DESC LIMIT 1";
-              $result = mysqli_query($conn, $query);
-              if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_array($result)) {
-                  $code = sprintf("%06d", $row['id'] + 1);
-              ?>
-                  <td colspan="4" class="fw-bold"><input type="text" class="text-center fw-bold" name="gatepassCode" value="<?php echo "PM-HRD-" . date("Y") . "-" . $code;
-                                                                                                                          }
-                                                                                                                        } ?>">
-                  </td>
-            </tr>
           </tfoot>
         </table>
         <div class="mb-3">

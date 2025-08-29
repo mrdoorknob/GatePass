@@ -20,11 +20,13 @@ if (isset($_POST['login'])) {
         $_SESSION['employeeName'] = $row['userFullname'];
         $_SESSION['employeeLogged'] = 'yes';
         header('Location: employeeDashboard.php');
+        exit();
       } else if ($userType == "Security") {
         $_SESSION['uname'] = $row['username'];
         $_SESSION['securityName'] = $row['userFullName'];
         $_SESSION['securityLogged'] = 'yes';
         header('Location: securityDashboard.php');
+        exit();
       }
       else if ($userType == "Supervisor") {
         $_SESSION['uname'] = $row['username'];
@@ -32,18 +34,13 @@ if (isset($_POST['login'])) {
         $_SESSION['supervisorName'] = $row['userFullname'];
         $_SESSION['supervisorLogged'] = 'yes';
         header('Location: supervisorDashboard.php');
+        exit();
       }
+    } else {
+      echo '<script>alert("Incorrect Username and/or Password.");</script>';
     }
-  } else if ($uname == "" || $password == "") { ?>
-    <script>
-      alert("Username and/or Password is Empty");
-    </script>;
-  <?php
-  } else if ($uname == $row['username'] && $password != $row['password']) { ?>
-    <script>
-      alert("Incorrect Username and/or Password.");
-    </script>;
-<?php
+  } else {
+    echo '<script>alert("Username and/or Password is Empty");</script>';
   }
 }
 ?>
@@ -83,26 +80,23 @@ if (isset($_POST['login'])) {
   <link href="Css/signin.css" rel="stylesheet">
 </head>
 
-<body class="text-center" style="background-color:#2d318f;">
+<body class="text-center" style="background: linear-gradient(135deg, #2d318f 90%, #FFD700 10%); min-height: 100vh;">
 
-  <main class="form-signin">
-    <form method="POST" action="">
-      <img class="mb-4" src="Pictures/Logos.png" alt="" width="300" height="150">
-      <h1 class="h2 mb-2 fw-normal" style="color: white;"> Gate Pass System</h1>
-      <h2 class="h4 mb-3 fw-normal" style="color: white;"> Ni Hao! Welcome</h2>
-
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="username" autocomplete="off" placeholder="J4-01-01">
-        <label for="floatingInput">Username</label>
+  <main class="form-signin d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+    <form method="POST" action="" class="p-4 rounded shadow-lg" style="background: #fff; max-width: 400px; width: 100%; border-radius: 16px;">
+      <img class="mb-4" src="Pictures/Logos.png" alt="" width="180" height="90" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(45,49,143,0.15);">
+      <h1 class="h2 mb-2 fw-bold" style="color: #2d318f;">Gate Pass System</h1>
+      <h2 class="h5 mb-3 fw-normal" style="color: #2d318f;">Ni Hao! Welcome</h2>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="username" autocomplete="off" placeholder="J4-01-01" style="border: 1.5px solid #2d318f; border-radius: 8px;">
+        <label for="floatingInput" style="color: #2d318f;">Username</label>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" name="password" autocomplete="off" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPassword" name="password" autocomplete="off" placeholder="Password" style="border: 1.5px solid #2d318f; border-radius: 8px;">
+        <label for="floatingPassword" style="color: #2d318f;">Password</label>
       </div>
-
-      <div class="checkbox mb-4"></div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" style="background-color: #2d318f; color: #FFD700; border: none; font-weight: 600; border-radius: 8px;">Sign in</button>
+      <p class="mt-4 mb-2 text-muted" style="color: #2d318f;">&copy; 2022–2025</p>
     </form>
   </main>
 
